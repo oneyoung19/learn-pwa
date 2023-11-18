@@ -1,24 +1,12 @@
 # test-pwa
 
-## Project setup
-```
-yarn install
-```
+[Service worker生命周期](https://web.dev/articles/service-worker-lifecycle?hl=zh-cn#avoid_url_change)
 
-### Compiles and hot-reloads for development
-```
-yarn serve
-```
+[workbox](https://developer.chrome.com/docs/workbox/service-worker-overview/)
 
-### Compiles and minifies for production
-```
-yarn build
-```
 
-### Lints and fixes files
-```
-yarn lint
-```
+## 调试
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+[chrome://serviceworker-internals/](chrome://serviceworker-internals/)
+
+[chrome://inspect/#service-workers](chrome://inspect/#service-workers)
