@@ -1,4 +1,4 @@
-# test-pwa
+# learn-pwa
 
 [workbox](https://developer.chrome.com/docs/workbox/service-worker-overview/)
 
