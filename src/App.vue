@@ -1,12 +1,32 @@
 <template>
   <div id="app">
     <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+      <!-- <router-link to="/">Home</router-link> |
+      <router-link to="/about">About</router-link> |
+      <router-link to="/story">Story</router-link> -->
+      <span @click="handleClickHome">Home</span> |
+      <span @click="handleClickAbout">About</span> |
+      <span @click="handleClickStory">Story</span>
     </div>
     <router-view/>
   </div>
 </template>
+
+<script>
+export default {
+  methods: {
+    handleClickHome () {
+      this.$router.push('/')
+    },
+    handleClickAbout () {
+      this.$router.push('/about')
+    },
+    handleClickStory () {
+      this.$router.push('/story')
+    }
+  }
+}
+</script>
 
 <style lang="less">
 #app {
