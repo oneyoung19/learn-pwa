@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <p>{{ `VUE_APP_TARGET = ${target}` }}</p>
     <div id="nav">
       <!-- <router-link :to="{ name: 'Home' }">Home</router-link> |
       <router-link :to="{ name: 'About' }">About</router-link> |
@@ -14,6 +15,15 @@
 
 <script>
 export default {
+  data () {
+    return {
+      target: ''
+    }
+  },
+  created () {
+    const { VUE_APP_TARGET } = process.env
+    this.target = VUE_APP_TARGET
+  },
   methods: {
     handleClickHome () {
       this.$router.push({
