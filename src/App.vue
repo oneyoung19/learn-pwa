@@ -1,9 +1,9 @@
 <template>
   <div id="app">
     <div id="nav">
-      <!-- <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link> |
-      <router-link to="/story">Story</router-link> -->
+      <!-- <router-link :to="{ name: 'Home' }">Home</router-link> |
+      <router-link :to="{ name: 'About' }">About</router-link> |
+      <router-link :to="{ name: 'Story' }">Story</router-link> -->
       <span @click="handleClickHome">Home</span> |
       <span @click="handleClickAbout">About</span> |
       <span @click="handleClickStory">Story</span>
@@ -16,13 +16,19 @@
 export default {
   methods: {
     handleClickHome () {
-      this.$router.push('/')
+      this.$router.push({
+        name: 'Home'
+      })
     },
     handleClickAbout () {
-      this.$router.push('/about')
+      this.$router.push({
+        name: 'About'
+      })
     },
     handleClickStory () {
-      this.$router.push('/story')
+      this.$router.push({
+        name: 'Story'
+      })
     }
   }
 }
