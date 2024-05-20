@@ -5,7 +5,7 @@
       <!-- <router-link :to="{ name: 'Home' }">Home</router-link> |
       <router-link :to="{ name: 'About' }">About</router-link> |
       <router-link :to="{ name: 'Story' }">Story</router-link> -->
-      <span @click="handleClickHome">Home2</span> |
+      <span @click="handleClickHome">Home3</span> |
       <span @click="handleClickAbout">About</span> |
       <span @click="handleClickStory">Story</span>
     </div>
