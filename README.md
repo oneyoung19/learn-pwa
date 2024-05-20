@@ -6,10 +6,6 @@ TODO:
 
 [淘系前端之workbox](https://fed.taobao.org/blog/taofed/do71ct/workbox3/)
 
-`MessageChannel`
-
-`BroadcastChannel`
-
 ## jake archibald
 
 [Service worker生命周期](https://web.dev/articles/service-worker-lifecycle?hl=zh-cn#avoid_url_change)
@@ -33,3 +29,11 @@ TODO:
 [chrome://serviceworker-internals/](chrome://serviceworker-internals/)
 
 [chrome://inspect/#service-workers](chrome://inspect/#service-workers)
+
+# PS
+
+- `MessageChannel`
+
+- `BroadcastChannel`
+
+[postMessage/MessageChannel/BrowserChannel三者之间的区别](https://cloud.tencent.com/developer/article/2377279)
