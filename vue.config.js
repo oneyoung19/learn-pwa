@@ -1,6 +1,6 @@
 module.exports = {
   outputDir: 'dist',
-  // outputDir: 'dist-pwa',
+  // outputDir: 'dist-InjectManifest',
   publicPath: process.env.NODE_ENV === 'production'
     ? '/learn-pwa/'
     : '/',
@@ -11,7 +11,6 @@ module.exports = {
     // workboxPluginMode: 'InjectManifest',
     workboxOptions: {
       // swSrc: 'src/service-worker.js'
-      // 缓存策略
     }
   }
 }
