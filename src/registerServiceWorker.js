@@ -30,3 +30,7 @@ if (process.env.NODE_ENV === 'production') {
     }
   })
 }
+
+// TODO:
+// 1.在此文件中触发postmessage 检测是否触发skipwaiting。目前浏览器中是3448和3449(waiting)
+// 2.检查html是否不再命中serviceworker
