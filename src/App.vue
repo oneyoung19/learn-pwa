@@ -10,11 +10,17 @@
       <span @click="handleClickStory">Story</span>
     </div>
     <router-view/>
+    <SwNotifyButton/>
   </div>
 </template>
 
 <script>
+import SwNotifyButton from './components/SwNotifyButton'
+
 export default {
+  components: {
+    SwNotifyButton
+  },
   data () {
     return {
       target: ''

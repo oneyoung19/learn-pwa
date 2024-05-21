@@ -32,6 +32,9 @@ if (process.env.NODE_ENV === 'production') {
       // })
       console.log(registration)
       // registration.waiting.postMessage({ type: 'SKIP_WAITING' })
+      document.dispatchEvent(
+        new CustomEvent('swUpdated', { detail: registration })
+      )
     },
     offline () {
       console.log('No internet connection found. App is running in offline mode.')
