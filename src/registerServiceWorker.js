@@ -31,7 +31,7 @@ if (process.env.NODE_ENV === 'production') {
       //   type: 'SKIP_WAITING'
       // })
       console.log(registration)
-      registration.waiting.postMessage({ type: 'SKIP_WAITING' })
+      // registration.waiting.postMessage({ type: 'SKIP_WAITING' })
     },
     offline () {
       console.log('No internet connection found. App is running in offline mode.')
