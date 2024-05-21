@@ -12,7 +12,7 @@ module.exports = {
     workboxOptions: {
       // swSrc: 'src/service-worker.js'
       // 排除掉html的缓存
-      exclude: [/\.map$/, /^manifest.*\.js$/, /\.html$/]
+      // exclude: [/\.map$/, /^manifest.*\.js$/, /\.html$/]
       // 排除携带指定参数的URL
       // ignoreURLParametersMatching: [/^utm_/, /^fbclid$/]
     }
