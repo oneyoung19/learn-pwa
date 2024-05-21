@@ -276,3 +276,92 @@ navigator.serviceWorker.addEventListener('controllerchange', () => {
 :::tip
 不推荐使用这种方式。生产环境应用性需谨慎。
 :::
+
+### 3.用户自主控制更新
+
+本节以 `vue-cli@4` 为例，完整版 `demo` 可参考[pwa-app-updates](https://github.com/185driver/pwa-app-updates)
+
+1. 在 `service-worker.js` 文件中，预留 `message` 事件监听，用于监听来自 `Main thread` 的消息：
+
+```js
+self.addEventListener('message', (event) => {
+  if (event.data && event.data.type === 'SKIP_WAITING') {
+    self.skipWaiting()
+  }
+})
+```
+
+2. 在 `registerServiceWorker.js` 中，注册回调函数：
+
+```js
+{
+  // e.g. hourly checks
+  registered (registration) {
+    setInterval(() => {
+      registration.update()
+    }, 1000 * 60 * 60) 
+  },
+  updated (registration) {
+    document.dispatchEvent(
+      new CustomEvent('swUpdated', { detail: registration })
+    )
+  }
+}
+```
+
+3. 添加通知组件 `DOM`：
+
+```html
+<template>
+  <button v-if="updateExists" @click="refreshApp">
+    New version available! Click to update
+  </button>
+</template>
+```
+
+4. 在组件中监听 `swUpdated` 事件：
+
+```js
+export default {
+  data() {
+    return {
+      refreshing: false,
+      registration: null,
+      updateExists: false,
+    }
+  },
+  created () {
+    document.addEventListener(
+      'swUpdated', this.showRefreshUI, { once: true }
+    )
+    if (navigator.serviceWorker) {  
+      navigator.serviceWorker.addEventListener('controllerchange', () => {
+          if (this.refreshing) return
+          this.refreshing = true
+          window.location.reload()
+        }
+      )
+    }
+  },
+  methods: {
+    showRefreshUI (e) {
+      this.registration = e.detail
+      this.updateExists = true
+    },
+    refreshApp () {
+      this.updateExists = false
+      if (!this.registration || !this.registration.waiting) { return }
+      this.registration.waiting.postMessage('skipWaiting')
+    }
+  }
+}
+```
+
+**✅ 优点**：
+
+该方案相对成熟，也是目前大部分 `PWA` 应用采用的更新策略。
+
+**❌ 缺点**：
+
+- 很繁琐，涉及到的文件众多，需要聚合逻辑。
+- 页面上添加了额外组件，对于生产项目来说，会影响 `UI` 样式。而且需要用户点击，增加了部分心智负担。
