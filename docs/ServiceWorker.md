@@ -197,3 +197,82 @@ self.addEventListener('fetch', (event) => {
   }
 })
 ```
+
+## 更新策略
+
+[Give Users Control Over App Updates in Vue CLI 3 PWAs](https://medium.com/@dougallrich/give-users-control-over-app-updates-in-vue-cli-3-pwas-20453aedc1f2)
+
+[How to Fix the Refresh Button When Using Service Workers](https://redfin.engineering/how-to-fix-the-refresh-button-when-using-service-workers-a8e27af6df68)
+
+[谨慎处理 Service Worker 的更新](https://zhuanlan.zhihu.com/p/51118741)
+
+### 1.直接使用skipWaiting
+
+这种方式简单粗暴。
+
+```js
+self.addEventListener('install', (event) => {
+  self.skipWaiting()
+  // 预缓存其他内容
+})
+```
+
+**✅ 优点**：
+
+逻辑直接，操作简单。
+
+**❌ 缺点**：
+
+1. 较好的情况是，代码版本不一致，重新请求资源，浪费带宽。
+2. 最差的情况是，资源 `404`，造成解析错误。
+
+譬如，假设我们的 `serviceWorker` 有两个新旧版本。
+
+较旧的 `v1` 版本缓存了 `/cdn/ac4e.jpg` 和 `/route/about.v1.js`，而更新的 `v2` 版本只缓存了 `/route/about.v2.js`，没有缓存 `/cdn/ac4e.jpg`。
+
+那么当内置了 `skipWaiting` 的 `v2` 版本控制客户端后，此时 `v1` 版本中的 `/cdn/ac4e.jpg` 缓存会失效，需要重新向 `CDN` 上发起请求获取。
+
+而 `v1` 版本中的**懒加载路由** `/route/about.v1.js` 已经不存在了，会导致 `404`，造成解析错误。
+
+:::tip
+简而言之，该策略适合始终存在的静态资源（譬如 `CDN` 上托管的资源），而不适合可能动态变化的资源（懒加载路由、`hash` 文件名资源）。
+:::
+
+### 2.使用 `skipWaiting` + `window.reload()`
+
+在上一节中，提到了单独直接调用 `skipWaiting` 时，虽然 `serviceWorker` 会立即更新，但由于页面已经加载（譬如 `index.html` 已加载），因此整个页面逻辑是旧链接，会有可能导致带宽浪费或者资源 `404`。
+
+因此顺着这个思路来看，我们可以在 `skipWaiting` 后，再调用 `window.reload()`，强制刷新页面，从而实现整个页面的重新更新。
+
+我们可以在 `Main thread` 中监听 `controllerchange` 事件：
+
+```js
+navigator.serviceWorker.addEventListener('controllerchange', () => {
+  window.location.reload()
+})
+```
+
+当上述逻辑涉及到 `Chrome Dev Tools` 的 `Update on Reload` 功能时，为了防止无限刷新，可以额外添加一个 `flag` 变量：
+
+```js
+let refreshing = false
+navigator.serviceWorker.addEventListener('controllerchange', () => {
+  if (refreshing) {
+    return
+  }
+  refreshing = true
+  window.location.reload()
+})
+```
+
+**✅ 优点**：
+
+相对后续方式来说，这种方式依然比较清晰简单。
+
+**❌ 缺点**：
+
+无缘无故的刷新客户端页面，不利于用户体验。
+
+:::tip
+不推荐使用这种方式。生产环境应用性需谨慎。
+:::
