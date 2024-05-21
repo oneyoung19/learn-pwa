@@ -9,6 +9,12 @@ if (process.env.NODE_ENV === 'production') {
         'App is being served from cache by a service worker.\n' +
         'For more details, visit https://goo.gl/AFskqB'
       )
+      console.log(navigator.serviceWorker.controller)
+      if (navigator.serviceWorker.controller) {
+        navigator.serviceWorker.controller.postMessage({
+          type: 'SKIP_WAITING'
+        })
+      }
     },
     registered (registration) {
       console.log('Service worker has been registered.')
@@ -21,9 +27,9 @@ if (process.env.NODE_ENV === 'production') {
     },
     updated (registration) {
       console.log('New content is available; please refresh.')
-      navigator.serviceWorker.controller.postMessage({
-        type: 'SKIP_WAITING'
-      })
+      // navigator.serviceWorker.controller.postMessage({
+      //   type: 'SKIP_WAITING'
+      // })
     },
     offline () {
       console.log('No internet connection found. App is running in offline mode.')
