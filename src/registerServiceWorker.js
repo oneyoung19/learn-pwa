@@ -10,11 +10,11 @@ if (process.env.NODE_ENV === 'production') {
         'For more details, visit https://goo.gl/AFskqB'
       )
       console.log(navigator.serviceWorker.controller)
-      if (navigator.serviceWorker.controller) {
-        navigator.serviceWorker.controller.postMessage({
-          type: 'SKIP_WAITING'
-        })
-      }
+      // if (navigator.serviceWorker.controller) {
+      //   navigator.serviceWorker.controller.postMessage({
+      //     type: 'SKIP_WAITING'
+      //   })
+      // }
     },
     registered (registration) {
       console.log('Service worker has been registered.')
@@ -30,6 +30,8 @@ if (process.env.NODE_ENV === 'production') {
       // navigator.serviceWorker.controller.postMessage({
       //   type: 'SKIP_WAITING'
       // })
+      console.log(registration)
+      registration.waiting.postMessage({ type: 'SKIP_WAITING' })
     },
     offline () {
       console.log('No internet connection found. App is running in offline mode.')
