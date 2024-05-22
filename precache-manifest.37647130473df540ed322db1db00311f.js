@@ -1,30 +1,30 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "1c01276b3d440693545e",
+    "revision": "15dccdebd5787c378dd6",
     "url": "/learn-pwa/css/app.1d2dae32.css"
   },
   {
-    "revision": "d18737295e5ffceac15cb94cba481b8d",
+    "revision": "3f6d173fce0bf44fc3cf5cc4aa07d7fa",
     "url": "/learn-pwa/index.html"
   },
   {
-    "revision": "65dc3530cd2d254994dc",
-    "url": "/learn-pwa/js/about.293a8f73.js"
+    "revision": "e1936264a291ed044e18",
+    "url": "/learn-pwa/js/about.a6d79ebf.js"
   },
   {
-    "revision": "1c01276b3d440693545e",
-    "url": "/learn-pwa/js/app.d2d0064f.js"
+    "revision": "15dccdebd5787c378dd6",
+    "url": "/learn-pwa/js/app.15934469.js"
   },
   {
-    "revision": "a132676871ac6c63b7a6",
-    "url": "/learn-pwa/js/chunk-2d0a4f8b.6aa12da4.js"
+    "revision": "d9d820d0558e2d12f0c1",
+    "url": "/learn-pwa/js/chunk-2d0a4f8b.ad6808d1.js"
   },
   {
     "revision": "150322e24a86438738a2",
     "url": "/learn-pwa/js/chunk-vendors.11753896.js"
   },
   {
-    "revision": "ecdd70d7270312373f80b81cbb6e76aa",
+    "revision": "e6983ae7d6f8bafb3b2dc228bbdd321d",
     "url": "/learn-pwa/manifest.json"
   },
   {
