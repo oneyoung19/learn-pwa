@@ -35,7 +35,9 @@ export default {
       this.updateExists = false
       console.log('---refreshApp---', this.registration)
       if (!this.registration || !this.registration.waiting) { return }
-      this.registration.waiting.postMessage('skipWaiting')
+      this.registration.waiting.postMessage({
+        type: 'SKIP_WAITING'
+      })
     }
   }
 }
