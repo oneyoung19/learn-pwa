@@ -1,4 +1,4 @@
-// 当客户端只存在一个tab时 进行刷新时 会激活新的serviceWorker 并刷新当前页面（在firefox上可能存在兼容性）
+// 当客户端只存在一个tab时 进行刷新时 会激活新的serviceWorker 并刷新当前页面（在firefox上可能存在兼容性--截止到2024/05/22 firefox@125.0.3版本执行依然失败 下述逻辑不触发）
 // 接收到'Refresh': '0'响应头后，立即刷新当前页面
 self.addEventListener('fetch', event => {
   event.respondWith((async () => {

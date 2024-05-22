@@ -18,6 +18,10 @@ if (process.env.NODE_ENV === 'production') {
     },
     registered (registration) {
       console.log('Service worker has been registered.')
+      // 周期性检查更新
+      // setInterval(() => {
+      //   registration.update()
+      // }, 1000 * 60 * 60)
     },
     cached (registration) {
       console.log('Content has been cached for offline use.')

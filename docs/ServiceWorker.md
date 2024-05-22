@@ -371,3 +371,52 @@ export default {
 
 - 很繁琐，涉及到的文件众多，需要聚合逻辑。
 - 页面上添加了额外组件，对于生产项目来说，会影响 `UI` 样式。而且需要用户点击，增加了部分心智负担。
+
+### 4.单个导航刷新
+
+当客户端只存在单个 `tab` 时，此时刷新该 `tab`，即刻更新 `serviceWorker`，并且为了保证资源的更新，重载页面。
+
+核心代码如下：
+
+```js
+// service-worker.js
+self.addEventListener('fetch', event => {
+  event.respondWith((async () => {
+    if (event.request.mode === 'navigate' &&
+      event.request.method === 'GET' &&
+      self.registration.waiting &&
+      (await clients.matchAll()).length < 2
+    ) {
+      self.registration.waiting.postMessage({
+        type: 'SKIP_WAITING'
+      })
+      return new Response('', {
+        headers: {
+          'Refresh': '0'
+        }
+      })
+    }
+    return await caches.match(event.request) ||
+      fetch(event.request)
+  })())
+})
+```
+
+其中：
+
+1. `event.request.mode === 'navigate'` 表示当前请求是 `navigate` 请求，即浏览器导航；
+2. `(await clients.matchAll()).length < 2` 表示单个 `tab`，（仅限单个 `tab` 导航刷新时）；
+3. `new Response('', { headers: { 'Refresh': '0' } })` 表示页面导航后，重新定向刷新（延迟 `0` 秒）。
+
+:::tip
+该条更新策略，可根据实际业务场景，选择性与第 `3` 条更新策略结合使用。
+:::
+
+**✅ 优点**：
+
+- 对用户来说，侵入性较弱，体验较好。
+
+**❌ 缺点**：
+
+- 出现短暂白屏，`Refresh: '0'` 重定向导致；
+- 浏览器兼容性较差。（截止到 `2024/05/22`，`firefox@125.0.3` 版本执行依然失败）。
