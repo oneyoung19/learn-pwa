@@ -8,7 +8,9 @@ self.addEventListener('fetch', event => {
       self.registration.waiting &&
       (await clients.matchAll()).length < 2
     ) {
-      self.registration.waiting.postMessage('skipWaiting')
+      self.registration.waiting.postMessage({
+        type: 'SKIP_WAITING'
+      })
       return new Response('', {headers: {'Refresh': '0'}})
     }
     return await caches.match(event.request) ||
@@ -19,6 +21,7 @@ self.addEventListener('fetch', event => {
 workbox.core.setCacheNameDetails({prefix: "learn-pwa"})
 
 self.addEventListener('message', (event) => {
+  console.warn('message', event.data)
   if (event.data && event.data.type === 'SKIP_WAITING') {
     self.skipWaiting()
   }
