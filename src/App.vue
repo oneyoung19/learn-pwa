@@ -1,11 +1,12 @@
 <template>
   <div id="app">
     <p>{{ `VUE_APP_TARGET = ${target}` }}</p>
+    <p>测试自主控制更新策略</p>
     <div id="nav">
       <!-- <router-link :to="{ name: 'Home' }">Home</router-link> |
       <router-link :to="{ name: 'About' }">About</router-link> |
       <router-link :to="{ name: 'Story' }">Story</router-link> -->
-      <span @click="handleClickHome">Home4</span> |
+      <span @click="handleClickHome">Home</span> |
       <span @click="handleClickAbout">About</span> |
       <span @click="handleClickStory">Story</span>
     </div>
