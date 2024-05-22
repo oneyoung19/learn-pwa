@@ -9,14 +9,18 @@ self.addEventListener('fetch', event => {
       self.registration.waiting.postMessage({
         type: 'SKIP_WAITING'
       })
-      return new Response('', {headers: {'Refresh': '0'}})
+      return new Response('', {
+        headers: {
+          'Refresh': '0'
+        }
+      })
     }
     return await caches.match(event.request) ||
       fetch(event.request)
   })())
 })
 
-workbox.core.setCacheNameDetails({prefix: "learn-pwa"})
+workbox.core.setCacheNameDetails({prefix: 'learn-pwa'})
 
 self.addEventListener('message', (event) => {
   console.warn('message', event.data)
