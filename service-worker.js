@@ -1,6 +1,7 @@
-importScripts("/learn-pwa/precache-manifest.541bf3842166daf6a19972a896dac8bf.js", "https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
+importScripts("/learn-pwa/precache-manifest.ad70d1e2d8701a1efee0f8defe0f504b.js", "https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 // 当客户端只存在一个tab时 进行刷新时 会激活新的serviceWorker 并刷新当前页面（在firefox上可能存在兼容性）
+// 接收到'Refresh': '0'响应头后，立即刷新当前页面
 self.addEventListener('fetch', event => {
   event.respondWith((async () => {
     if (event.request.mode === 'navigate' &&
