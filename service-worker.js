@@ -14,16 +14,14 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/learn-pwa/precache-manifest.bb6b82670048b36cad8f52214b05d54a.js"
+  "/learn-pwa/precache-manifest.4ad2298864e09aadf68a704648554c5d.js"
 );
 
 workbox.core.setCacheNameDetails({prefix: "learn-pwa"});
 
-self.addEventListener('message', (event) => {
-  if (event.data && event.data.type === 'SKIP_WAITING') {
-    self.skipWaiting();
-  }
-});
+workbox.core.skipWaiting();
+
+workbox.core.clientsClaim();
 
 /**
  * The workboxSW.precacheAndRoute() method efficiently caches and responds to
@@ -32,3 +30,5 @@ self.addEventListener('message', (event) => {
  */
 self.__precacheManifest = [].concat(self.__precacheManifest || []);
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
+
+workbox.routing.registerRoute(/\.html?$/, new workbox.strategies.NetworkFirst({ "cacheName":"html-cache", plugins: [new workbox.expiration.Plugin({ maxEntries: 50, maxAgeSeconds: 2592000, purgeOnQuotaError: false })] }), 'GET');
