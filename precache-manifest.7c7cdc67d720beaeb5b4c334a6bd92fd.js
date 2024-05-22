@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "dfcb383cf11c7a117816",
+    "revision": "da6c9a0372abf687a595",
     "url": "/learn-pwa/css/app.1d2dae32.css"
   },
   {
@@ -72,8 +72,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/learn-pwa/js/about.a6d79ebf.js"
   },
   {
-    "revision": "dfcb383cf11c7a117816",
-    "url": "/learn-pwa/js/app.4feb1f0a.js"
+    "revision": "da6c9a0372abf687a595",
+    "url": "/learn-pwa/js/app.75714bf2.js"
   },
   {
     "revision": "d9d820d0558e2d12f0c1",
