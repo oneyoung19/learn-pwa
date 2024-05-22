@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <p>{{ `VUE_APP_TARGET = ${target}` }}</p>
-    <p>最终版自主控制更新策略——Not reload in Default v3</p>
+    <p>最终版自主控制更新策略——skipWaiting At Once</p>
     <div id="nav">
       <!-- <router-link :to="{ name: 'Home' }">Home</router-link> |
       <router-link :to="{ name: 'About' }">About</router-link> |

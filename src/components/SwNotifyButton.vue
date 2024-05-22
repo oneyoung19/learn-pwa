@@ -22,7 +22,7 @@ export default {
         console.log('---controllerchange---', this.refreshing)
         if (this.refreshing) return
         this.refreshing = true
-        // window.location.reload()
+        window.location.reload()
       })
     }
   },
