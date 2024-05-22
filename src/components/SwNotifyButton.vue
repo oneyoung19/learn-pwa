@@ -19,11 +19,11 @@ export default {
     )
     if (navigator.serviceWorker) {
       navigator.serviceWorker.addEventListener('controllerchange', () => {
+        console.log('---controllerchange---', this.refreshing)
         if (this.refreshing) return
         this.refreshing = true
         window.location.reload()
-      }
-      )
+      })
     }
   },
   methods: {
@@ -33,6 +33,7 @@ export default {
     },
     refreshApp () {
       this.updateExists = false
+      console.log('---refreshApp---', this.registration)
       if (!this.registration || !this.registration.waiting) { return }
       this.registration.waiting.postMessage('skipWaiting')
     }
