@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "282725d862f30f6d9e38",
+    "revision": "214c1b85ed0171480bf9",
     "url": "/learn-pwa/css/app.b91af066.css"
   },
   {
-    "revision": "7aa3da093abaddecaff814e07bd4b5b9",
+    "revision": "aa51c81d07fd41976281385135ef1654",
     "url": "/learn-pwa/index.html"
   },
   {
@@ -12,8 +12,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/learn-pwa/js/about.a6d79ebf.js"
   },
   {
-    "revision": "282725d862f30f6d9e38",
-    "url": "/learn-pwa/js/app.a5185ce9.js"
+    "revision": "214c1b85ed0171480bf9",
+    "url": "/learn-pwa/js/app.356b5c8f.js"
   },
   {
     "revision": "d9d820d0558e2d12f0c1",
@@ -24,7 +24,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/learn-pwa/js/chunk-vendors.11753896.js"
   },
   {
-    "revision": "e6983ae7d6f8bafb3b2dc228bbdd321d",
+    "revision": "ff9ca0de41bacde2cb9819ce16dea93a",
     "url": "/learn-pwa/manifest.json"
   },
   {
