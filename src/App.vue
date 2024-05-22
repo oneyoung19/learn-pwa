@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <p>{{ `VUE_APP_TARGET = ${target}` }}</p>
-    <p>最终版自主控制更新策略——Navigate</p>
+    <p>最终版自主控制更新策略——HTML Cache</p>
     <div id="nav">
       <!-- <router-link :to="{ name: 'Home' }">Home</router-link> |
       <router-link :to="{ name: 'About' }">About</router-link> |
