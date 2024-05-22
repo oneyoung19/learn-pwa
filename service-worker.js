@@ -1,4 +1,4 @@
-importScripts("/learn-pwa/precache-manifest.37647130473df540ed322db1db00311f.js", "https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
+importScripts("/learn-pwa/precache-manifest.56b4ac433f9f942cd49ff9d0f6fea1a5.js", "https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 // 当客户端只存在一个tab时 进行刷新时 会激活新的serviceWorker 并刷新当前页面（在firefox上可能存在兼容性--截止到2024/05/22 firefox@125.0.3版本执行依然失败 下述逻辑不触发）
 // 接收到'Refresh': '0'响应头后，立即刷新当前页面
