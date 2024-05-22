@@ -1,4 +1,4 @@
-importScripts("/learn-pwa/precache-manifest.b9a16ba4654b415cb9ad008c0729eeab.js", "https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
+importScripts("/learn-pwa/precache-manifest.8d07287f8bdaf2cfd9a35608b1a92d3f.js", "https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 // skipWaiting
 self.addEventListener('install', (event) => {
