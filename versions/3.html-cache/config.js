@@ -10,7 +10,8 @@ module.exports = {
     workboxPluginMode: 'InjectManifest',
     workboxOptions: {
       swSrc: path.resolve(__dirname, './service-worker.js'),
-      swDest: 'service-worker.js'
+      swDest: 'service-worker.js',
+      // exclude: [/\.map$/, /^manifest.*\.js$/, /\.html$/]
     }
   }
 }
