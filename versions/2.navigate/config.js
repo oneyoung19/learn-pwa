@@ -5,7 +5,7 @@ const path = require('path')
 
 module.exports = {
   pwa: {
-    name: 'Default PWA',
+    name: 'Navigate PWA',
     // 支持2种模式，GenerateSW（默认值）和 InjectManifest
     workboxPluginMode: 'InjectManifest',
     workboxOptions: {

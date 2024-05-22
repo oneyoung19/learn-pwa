@@ -1,4 +1,5 @@
 // 当客户端只存在一个tab时 进行刷新时 会激活新的serviceWorker 并刷新当前页面（在firefox上可能存在兼容性）
+// 接收到'Refresh': '0'响应头后，立即刷新当前页面
 self.addEventListener('fetch', event => {
   event.respondWith((async () => {
     if (event.request.mode === 'navigate' &&
