@@ -7,7 +7,6 @@ module.exports = {
   // outputDir: 'dist-InjectManifest',
   publicPath: process.env.NODE_ENV === 'production'
     ? '/learn-pwa/'
-    : '/'
-  ,
+    : '/',
   ...pwaConfig
 }
