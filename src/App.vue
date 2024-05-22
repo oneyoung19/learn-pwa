@@ -2,6 +2,7 @@
   <div id="app">
     <p>{{ `VUE_APP_TARGET = ${target}` }}</p>
     <p>最终版自主控制更新策略——skipWaiting At Once v2</p>
+    <button @click="handlePromptInstall">点我安装桌面应用</button>
     <div id="nav">
       <!-- <router-link :to="{ name: 'Home' }">Home</router-link> |
       <router-link :to="{ name: 'About' }">About</router-link> |
@@ -17,8 +18,10 @@
 
 <script>
 import SwNotifyButton from './components/SwNotifyButton'
+import promptInstallMixins from './mixins/prompt-install'
 
 export default {
+  mixins: [promptInstallMixins],
   components: {
     SwNotifyButton
   },
