@@ -5,12 +5,13 @@ self.addEventListener('install', (event) => {
   self.skipWaiting()
 })
 // html networkFirst
-workbox.routing.registerRoute(
-  /\.html$/,
-  workbox.strategies.networkFirst({
-    cacheName: 'url-cache',
-  })
-)
+// workbox.routing.registerRoute(
+//   /\.html$/,
+//   workbox.strategies.networkFirst({
+//     cacheName: 'url-cache',
+//   })
+// )
+// 该方式下 测试发现workbox.core.clientsClaim不是必需的 多个clients会自动同时刷新
 
 workbox.core.setCacheNameDetails({prefix: 'learn-pwa'})
 
