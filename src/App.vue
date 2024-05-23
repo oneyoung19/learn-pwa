@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <p>{{ `VUE_APP_TARGET = ${target}` }}</p>
-    <p>最终版自主控制更新策略——skipWaiting At Once v2</p>
+    <p>最终版自主控制更新策略——skipWaiting At Once v3</p>
     <button @click="handlePromptInstall" v-show="supportPromptInstall">点我安装桌面应用</button>
     <div id="nav">
       <!-- <router-link :to="{ name: 'Home' }">Home</router-link> |
