@@ -1,6 +1,7 @@
 export default {
   data () {
     return {
+      supportPromptInstall: false,
       deferredPrompt: null
     }
   },
@@ -12,6 +13,7 @@ export default {
     beforeInstallPrompt (e) {
       // Prevent the mini-infobar from appearing on mobile
       e.preventDefault()
+      this.supportPromptInstall = true
       // Stash the event so it can be triggered later.
       this.deferredPrompt = e
       // Update UI notify the user they can install the PWA
