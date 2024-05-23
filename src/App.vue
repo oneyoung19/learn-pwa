@@ -3,6 +3,7 @@
     <p>{{ `VUE_APP_TARGET = ${target}` }}</p>
     <p>最终版自主控制更新策略——skipWaiting At Once v3</p>
     <button @click="handlePromptInstall" v-show="supportPromptInstall">点我安装桌面应用</button>
+    <button @click="handleSentryError">Sentry Error</button>
     <div id="nav">
       <!-- <router-link :to="{ name: 'Home' }">Home</router-link> |
       <router-link :to="{ name: 'About' }">About</router-link> |
@@ -35,6 +36,10 @@ export default {
     this.target = VUE_APP_TARGET
   },
   methods: {
+    handleSentryError () {
+      const obj = null
+      console.log(obj.fn())
+    },
     handleClickHome () {
       this.$router.push({
         name: 'Home'
